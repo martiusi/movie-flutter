@@ -62,6 +62,8 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
       children: [
         _builCover(),
         _buildStatus(),
+        _buildPopularity(),
+        _buildLanguage(),
         _buildOverview(),
       ],
     );
@@ -78,6 +80,15 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
     );
   }
 
+  _buildLanguage() {
+    return Container(
+      padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+      child: Text(
+        'Original language: ' + _controller.movieDetail.originalLanguage,
+      ),
+    );
+  }
+
   _buildStatus() {
     return Container(
       padding: const EdgeInsets.all(10.0),
@@ -87,6 +98,18 @@ class _MovieDetailPageState extends State<MovieDetailPage> {
           Rate(_controller.movieDetail.voteAverage),
           SizedBox(width: 20.0),
           ChipDate(date: _controller.movieDetail.releaseDate),
+        ],
+      ),
+    );
+  }
+
+  _buildPopularity() {
+    return Container(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        children: [
+          Text('Popularity: '),
+          Rate(_controller.movieDetail.popularity),
         ],
       ),
     );
